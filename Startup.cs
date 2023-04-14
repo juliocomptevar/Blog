@@ -57,7 +57,6 @@ namespace Blog
             _ = services.AddDbContext<UsuarioContext>(Options => Options.UseSqlServer("Server=DESKTOP-84N8K3S\\SQLEXPRESS;Database=bancoBlog;Trusted_Connection=True;"));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

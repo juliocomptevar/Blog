@@ -1,12 +1,14 @@
 ﻿using Blog.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Blog.Service
 {
     public class PostService
     {
-        private readonly TabPost _context;
-        public PostService(TabPost context)
+        private readonly UsuarioContext _context;
+        public PostService(UsuarioContext context)
         {
             _context = context;
         }
@@ -27,11 +29,25 @@ namespace Blog.Service
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception ex )
             {
                 return false;
             }
 
         }
+        public List<TabPost> ObterPost()
+        {
+            try
+            {
+                var usuarios = _context.TabPost.ToList();
+                return usuarios;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
+        }
+
+       
     }
 }

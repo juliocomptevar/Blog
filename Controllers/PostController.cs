@@ -1,6 +1,7 @@
 ﻿using Blog.Model;
 using Blog.Service;
 using Blog.Usuario;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Controllers
@@ -9,8 +10,8 @@ namespace Blog.Controllers
     [Route("[controller]")]
     public class PostController : ControllerBase
     {
-        private readonly TabPost _context;
-        public PostController(TabPost context)
+        private readonly UsuarioContext _context;
+        public PostController(UsuarioContext context)
         {
             _context = context;
         }
@@ -30,5 +31,16 @@ namespace Blog.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet]
+        public IActionResult ObterPost()
+        {
+            var usuarioService = new PostService(_context);
+            var sucesso = usuarioService.ObterPost();
+
+            return Ok(sucesso);
+        }
+
+       
     }
 }

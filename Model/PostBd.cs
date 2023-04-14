@@ -9,7 +9,6 @@
 
         public string texto { get; set; }
 
-        public string IdUsuario { get; set; }
-
+        public int IdUsuario { get; set; }
     }
 }
