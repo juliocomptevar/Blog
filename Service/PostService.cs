@@ -47,7 +47,23 @@ namespace Blog.Service
                 return null;
             }
         }
+        public bool DeletePost(int id)
+        {
+            try
+            {
+                var deletar = _context.TabPost.FirstOrDefault(x => x.Id == id);
+                if (deletar == null)
+                {
+                    return false;
+                };
+                _context.TabPost.Remove(deletar);
+                _context.SaveChanges();
+                return true;
+            }
+            catch { return false; }
+        }
 
-       
+
+
     }
 }

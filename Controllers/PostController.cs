@@ -41,6 +41,21 @@ namespace Blog.Controllers
             return Ok(sucesso);
         }
 
-       
+        [HttpDelete]
+        [Route("{id}")]
+
+        public IActionResult DeletePost([FromRoute] int id)
+        {
+            var PostService = new PostService(_context);
+            var sucesso = PostService.DeletePost(id);
+
+            if (sucesso == true)
+            {
+                return NoContent();
+            }
+            else { return BadRequest(); }
+        }
+
+
     }
 }
